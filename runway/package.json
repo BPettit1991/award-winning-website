@@ -1,0 +1,12 @@
+{
+  "name": "runway-drops",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "test": "node --test",
+    "runway": "node bin/runway.mjs"
+  }
+}

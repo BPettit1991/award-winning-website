@@ -1,0 +1,162 @@
+{
+  "shop": "",
+  "storefront": "https://therunway.linkhaus.com.au",
+  "apiVersion": "2026-10",
+  "vendor": "TheRunway c/o Linkhaus",
+  "timezone": "Australia/Sydney",
+  "ownerTag": "runway-pipeline",
+  "defaultTags": [
+    "rainbow-connections"
+  ],
+  "art": {
+    "minWidth": 1800,
+    "idealWidth": 3600,
+    "aspect": 0.75,
+    "aspectTolerance": 0.03,
+    "maxBytes": 20000000
+  },
+  "mockups": {
+    "max": 4,
+    "width": 2000,
+    "format": "jpg",
+    "sampleSize": "M"
+  },
+  "blanks": {
+    "heavy-tee": {
+      "name": "Comfort Colors 1717 garment-dyed heavyweight tee",
+      "productType": "T-Shirt",
+      "price": "39.00",
+      "placement": "back",
+      "printful": {
+        "Black": {
+          "S": 15114,
+          "M": 15115,
+          "L": 15116,
+          "XL": 15117,
+          "2XL": 15118,
+          "3XL": 16326,
+          "4XL": 17500
+        },
+        "Ivory": {
+          "S": 16523,
+          "M": 16524,
+          "L": 16525,
+          "XL": 16526,
+          "2XL": 16527,
+          "3XL": 16528,
+          "4XL": 17507
+        }
+      },
+      "grams": {
+        "S": 159,
+        "M": 179,
+        "L": 198,
+        "XL": 230,
+        "2XL": 269,
+        "3XL": 272,
+        "4XL": 320
+      },
+      "blurbHtml": "<p>Built on Comfort Colors 1717: thick, soft, and made to last.</p><ul><li>100% ring-spun cotton</li><li>Garment-dyed heavyweight fabric</li><li>Relaxed unisex fit</li><li>Printed to order, just for you</li></ul>"
+    },
+    "staple-tee": {
+      "name": "Bella + Canvas 3001 unisex staple tee",
+      "productType": "T-Shirt",
+      "price": "39.00",
+      "placement": "front",
+      "printful": {
+        "White": {
+          "XS": 9526,
+          "S": 4011,
+          "M": 4012,
+          "L": 4013,
+          "XL": 4014,
+          "2XL": 4015,
+          "3XL": 5294,
+          "4XL": 5309,
+          "5XL": 12872
+        }
+      },
+      "grams": {
+        "XS": 102,
+        "S": 130,
+        "M": 142,
+        "L": 164,
+        "XL": 170,
+        "2XL": 201,
+        "3XL": 213,
+        "4XL": 255,
+        "5XL": 236
+      },
+      "blurbHtml": "<p>Soft and lightweight, with the right amount of stretch. Comfortable and flattering for all.</p><ul><li>100% combed and ring-spun cotton</li><li>Fabric weight: 4.2 oz/yd² (142 g/m²)</li><li>Pre-shrunk, side-seamed construction</li><li>Printed to order, just for you</li></ul><p>The fabric is slightly sheer and may appear see-through in lighter colours.</p>"
+    },
+    "hoodie": {
+      "name": "Gildan 18500 unisex heavy blend hoodie",
+      "productType": "Hoodie",
+      "price": "69.00",
+      "placement": "front",
+      "printful": {
+        "Black": {
+          "S": 5530,
+          "M": 5531,
+          "L": 5532,
+          "XL": 5533,
+          "2XL": 5534,
+          "3XL": 5535,
+          "4XL": 5536,
+          "5XL": 5537
+        },
+        "Navy": {
+          "S": 5594,
+          "M": 5595,
+          "L": 5596,
+          "XL": 5597,
+          "2XL": 5598,
+          "3XL": 5599,
+          "4XL": 5600,
+          "5XL": 5601
+        },
+        "Sport Grey": {
+          "S": 5610,
+          "M": 5611,
+          "L": 5612,
+          "XL": 5613,
+          "2XL": 5614,
+          "3XL": 5615,
+          "4XL": 5616,
+          "5XL": 5617
+        },
+        "Light Blue": {
+          "S": 10841,
+          "M": 10842,
+          "L": 10843,
+          "XL": 10844,
+          "2XL": 10845,
+          "3XL": 10846,
+          "4XL": 10847,
+          "5XL": 10848
+        },
+        "White": {
+          "S": 5522,
+          "M": 5523,
+          "L": 5524,
+          "XL": 5525,
+          "2XL": 5526,
+          "3XL": 5527,
+          "4XL": 5528,
+          "5XL": 5529
+        }
+      },
+      "grams": {
+        "S": 454,
+        "M": 468,
+        "L": 567,
+        "XL": 618,
+        "2XL": 638,
+        "3XL": 714,
+        "4XL": 726,
+        "5XL": 746
+      },
+      "blurbHtml": "<ul><li>Soft 50/50 cotton and polyester blend fleece</li><li>Warm, hard-wearing, pill-resistant air-jet spun yarn</li><li>Roomy front pouch pocket and double-lined hood with drawcord</li><li>Unisex fit, sizes S to 5XL</li><li>Printed to order, just for you</li></ul>"
+    }
+  }
+}

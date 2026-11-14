@@ -1,0 +1,17 @@
+{
+  "collection": {
+    "title": "Collection name shown in the store",
+    "description": "One or two sentences shown at the top of the collection page."
+  },
+  "release": "2099-01-01",
+  "designs": [
+    {
+      "title": "Rainbow Connection Example Tee",
+      "blank": "heavy-tee",
+      "color": "Black",
+      "art": "art/example.png",
+      "description": "Two or three sentences about this design, in the store's voice.",
+      "tags": ["nostalgia"]
+    }
+  ]
+}
