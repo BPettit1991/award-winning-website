@@ -98,6 +98,10 @@ async function main() {
 
     case 'sync': {
       const { drops, specs } = await validated(config, target);
+      if (!specs.length) {
+        console.log('No drops to sync.');
+        break;
+      }
       const ctx = { ...clients(config), config, log: console.log, relink: Boolean(flags.relink) };
       let failed = 0;
       let waiting = 0;
