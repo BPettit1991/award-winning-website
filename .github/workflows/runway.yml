@@ -1,0 +1,85 @@
+name: Runway drops
+
+on:
+  pull_request:
+    paths: ["runway/**", ".github/workflows/runway.yml"]
+  push:
+    branches: [main]
+    paths: ["runway/drops/**", "runway/config.json"]
+  schedule:
+    # 21:17 UTC is 08:17 in Sydney during daylight saving (07:17 in winter).
+    - cron: "17 21 * * *"
+  workflow_dispatch:
+    inputs:
+      command:
+        description: What to run
+        type: choice
+        default: doctor
+        options: [doctor, sync, release, tidy, audit]
+      drop:
+        description: Drop folder name (optional; required for an early release)
+        type: string
+      confirm:
+        description: "release: publish now, ignoring the release date. tidy: apply the changes instead of listing them"
+        type: boolean
+        default: false
+
+# One run at a time, so two pushes cannot race each other into creating duplicates.
+concurrency:
+  group: runway
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: runway
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test
+      - run: node bin/runway.mjs validate
+      - run: node bin/runway.mjs plan
+
+  run:
+    needs: check
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+      SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+      PRINTFUL_TOKEN: ${{ secrets.PRINTFUL_TOKEN }}
+      PRINTFUL_STORE_ID: ${{ vars.PRINTFUL_STORE_ID }}
+      COMMAND: ${{ inputs.command }}
+      DROP: ${{ inputs.drop }}
+      CONFIRM: ${{ inputs.confirm }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Sync drops (drafts, Printful links, mockups)
+        if: github.event_name == 'push' || github.event_name == 'schedule'
+        run: node bin/runway.mjs sync
+
+      - name: Release drops that are due
+        if: github.event_name == 'schedule'
+        run: node bin/runway.mjs release
+
+      - name: Run the chosen command
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          args=("$COMMAND")
+          if [ -n "$DROP" ]; then args+=("$DROP"); fi
+          if [ "$CONFIRM" = "true" ] && [ "$COMMAND" = "release" ]; then args+=(--now); fi
+          if [ "$CONFIRM" = "true" ] && [ "$COMMAND" = "tidy" ]; then args+=(--apply); fi
+          node bin/runway.mjs "${args[@]}"
